@@ -1,4 +1,4 @@
-package br.com.romanconverter.entities;
+package br.com.romanconverter.models.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

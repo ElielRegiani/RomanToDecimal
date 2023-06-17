@@ -1,4 +1,4 @@
-package br.com.romanconverter.entities;
+package br.com.romanconverter.models.entities;
 
 import java.util.Date;
 import java.util.List;
