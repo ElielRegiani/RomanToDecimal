@@ -6,13 +6,12 @@
     <title>RomanToDecimal</title>
 </head>
     <body>
-        <div class="border border-primary w-25 p-3 mx-auto mt-5">
-            <div class="input-group mb-3 text-primary">
-                <input type="text" class="form-control" placeholder="Enter Roman Number" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary align-middle text-primary" type="button" id="button-addon2">Convert</button>
-                </div>
+        <form action="/converter/convert" method="POST">
+            <div class="form-group">
+                <label for="romanNumber">Roman Number</label>
+                <input name="romanNumber" type="text" class="form-control" id="romanNumber" placeholder="Enter a number...">
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
     </body>
 </html>

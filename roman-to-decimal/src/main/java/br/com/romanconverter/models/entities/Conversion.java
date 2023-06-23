@@ -15,10 +15,8 @@ public class Conversion {
     private String romanNumber;
     private String decimalNumber;
 
-    public Conversion(Long id, String romanNumber, String decimalNumber) {
-        this.id = id;
-        this.romanNumber = romanNumber;
-        this.decimalNumber = decimalNumber;
+    public Conversion(String romanNumber) {
+        this.romanNumber = validateRomanNumber(romanNumber);
     }
 
     @Id
@@ -47,5 +45,24 @@ public class Conversion {
 
     public void setDecimalNumber(String decimalNumber) {
         this.decimalNumber = decimalNumber;
+    }
+
+    public String validateRomanNumber(String numberInput) {
+        String romanNumber = numberInput.toLowerCase().trim();
+        if (hasNumberOrInvalidCharacter(romanNumber)) {
+            throw new RuntimeException("Has number or invalid character!");
+        }
+        if (invalidRomanFormat(romanNumber)) {
+            throw new RuntimeException("Invalid roman number format!");
+        }
+        return romanNumber;
+    }
+
+    private boolean invalidRomanFormat(String romanNumber) {
+        return romanNumber.matches("^(M{0,3})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
+    }
+
+    public boolean hasNumberOrInvalidCharacter(String romanNumber) {
+        return romanNumber.matches("[a-zA-Z]+");
     }
 }
