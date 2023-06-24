@@ -63,6 +63,6 @@ public class Conversion {
     }
 
     public boolean hasNumberOrInvalidCharacter(String romanNumber) {
-        return romanNumber.matches("[a-zA-Z]+");
+        return !romanNumber.matches("[a-zA-Z]+");
     }
 }
