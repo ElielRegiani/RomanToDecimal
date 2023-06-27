@@ -8,17 +8,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import br.com.romanconverter.Repository.ConversionRepository;
 import br.com.romanconverter.dto.ConversionDTO;
-import br.com.romanconverter.models.entities.Conversion;
 import br.com.romanconverter.service.RomanConverterService;
 
 @Controller
 @RequestMapping("converter")
 public class RomanConverterController {
-
-    @Autowired
-    private ConversionRepository conversionRepository;
 
     @Autowired
     private RomanConverterService romanConverterService;
@@ -31,9 +26,7 @@ public class RomanConverterController {
 
     @PostMapping("convert")
     public String convert(ConversionDTO conversionDTO) {
-        Conversion conversion = new Conversion(conversionDTO.getRomanNumber());
-        conversion.setDecimalNumber(romanConverterService.convertToDecimal(conversion.getRomanNumber()));
-        conversionRepository.saveAndFlush(conversion);
+        romanConverterService.createAndSaveConversion(conversionDTO);
         return "converter";
     }
 }

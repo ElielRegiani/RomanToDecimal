@@ -47,4 +47,8 @@ public class ConversionHistory {
     public void setConversions(List<Conversion> conversions) {
         this.conversions = conversions;
     }
+
+    public void addConversion(Conversion conversion) {
+        this.conversions.add(conversion);
+    }
 }
