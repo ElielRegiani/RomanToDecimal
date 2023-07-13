@@ -1,5 +1,6 @@
 package br.com.romanconverter.models.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -18,7 +19,7 @@ public class ConversionHistory {
 
     private Long id;
     private Date date;
-    private List<Conversion> conversions;
+    private List<Conversion> conversions = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

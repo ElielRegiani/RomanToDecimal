@@ -1,6 +1,9 @@
 package br.com.romanconverter.service;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -91,6 +94,7 @@ public class RomanConverterService {
 
     @Transactional
     private ConversionHistory getConversionHistoryByDate(Date date) {
-        return conversionHistoryRepository.findAll().stream().filter(it -> it.getDate().equals(date)).findFirst().get();
+        List<ConversionHistory> conversionHistoryList = conversionHistoryRepository.findByDate(date);
+        return conversionHistoryList.size() != 0 ? conversionHistoryList.get(0) : null;
     }
 }
